@@ -1,0 +1,8 @@
+/buck-out
+**/buck-out
+/.buckconfig.*.tmp
+/.buckconfig.d/tine-mounts
+/.buckconfig.local
+/.buckconfig.local.*.tmp
+/tine.local.toml
+/.buck
