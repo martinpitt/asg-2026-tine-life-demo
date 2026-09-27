@@ -1,0 +1,11 @@
+"""Stable aliases from generated package branches to catalog buildroots.
+
+Each imported packages/<distro>/<branch>/ needs one alias here, named exactly like the
+branch: the regenerated branch BUCK builds against //buildroots/<distro>:<branch>.
+"""
+
+alias(
+    name = "rawhide",
+    actual = "tine//catalog:fedora.rawhide.buildroot",
+    visibility = ["PUBLIC"],
+)
