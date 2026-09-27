@@ -1,3 +1,6 @@
 [buckconfig.cells]
 root = "."
 tine = "tine"
+
+[commands.importer]
+steps = [["buck", "-v0", "run", "tine//tools:importer", "--"]]
