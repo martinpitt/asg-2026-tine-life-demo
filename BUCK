@@ -2,6 +2,7 @@ load("@tine//box:defs.bzl", "box")
 load("@tine//git:defs.bzl", "git")
 load("@tine//go:defs.bzl", "go")
 load("@tine//image:defs.bzl", "image")
+load("@tine//package:defs.bzl", "package")
 
 # Build environment for our Go projects; never reaches the image
 box.new(
@@ -23,9 +24,15 @@ go.package(
     src = ":duf.git",
 )
 
+package.manager(
+    name = "demo.package-manager",
+    base = "tine//catalog:fedora.rawhide.package-manager",
+    local_packages = "//packages/fedora/rawhide:_local_packages",
+)
+
 image.bootable_disk(
     name = "demo",
-    package_manager = "tine//catalog:fedora.rawhide.package-manager",
+    package_manager = ":demo.package-manager",
     definitions = image.DEFAULT_USR_VERITY_PARTITIONS,
     version = "0.0.0",
     package_sets = ["bootable"],
